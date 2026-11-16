@@ -7,14 +7,12 @@ const PUBLIC_DIR = path.join(import.meta.dirname, "public");
 
 let requestsServed = 0;
 
-// 1. Request Logger
 const requestLogger = (req, res, next) => {
   const timestamp = new Date().toISOString();
   console.log(`[${timestamp}] ${req.method} ${req.originalUrl}`);
   next();
 };
 
-// 2. Request Counter
 const requestCounter = (req, res, next) => {
   requestsServed += 1;
   next();
@@ -22,6 +20,20 @@ const requestCounter = (req, res, next) => {
 
 app.use(requestLogger);
 app.use(requestCounter);
+
+// Metin ve yönlendirme rotaları
+app.get("/hello", (req, res) => {
+  res.type("text/plain").send("Hello from Deniz's server!");
+});
+
+app.get("/robots.txt", (req, res) => {
+  const robotsContent = "User-agent: *\nAllow: /\nDisallow: /api/admin";
+  res.type("text/plain").send(robotsContent);
+});
+
+app.get("/old-page", (req, res) => {
+  res.redirect("/hello");
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
