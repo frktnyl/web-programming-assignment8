@@ -80,6 +80,17 @@ app.get("/api/stats", (req, res) => {
   res.json({ requestsServed });
 });
 
+// 404 Fallback (Express 5 uyumlu)
+app.use((req, res) => {
+  if (req.path.startsWith("/api")) {
+    return res.status(404).json({ error: "Not found" });
+  }
+  return res
+    .status(404)
+    .type("text/html")
+    .send("<h1>404 - Page Not Found</h1><p>The requested page does not exist on this server.</p>");
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
