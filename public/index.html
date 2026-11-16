@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BSc Web Systems Engineering — Programme Info</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <span class="badge">Fall 2026 Intake</span>
+      <h1>BSc in Web Systems Engineering</h1>
+      <p>
+        Our study programme prepares students to design, build, and scale modern web architectures from the ground up.
+        Focusing on HTTP fundamentals, server-side runtimes, and resilient browser interfaces, students master how clients and servers communicate.
+      </p>
+    </header>
+
+    <section class="panel">
+      <h2>Interactive API Explorer</h2>
+      <p class="subtitle">Click any endpoint below to send a live request using the browser Fetch API.</p>
+      <div class="button-grid">
+        <button type="button" data-method="GET" data-url="/api/courses"><span class="method get">GET</span> /api/courses</button>
+        <button type="button" data-method="GET" data-url="/api/status"><span class="method get">GET</span> /api/status</button>
+        <button type="button" data-method="GET" data-url="/api/headers"><span class="method get">GET</span> /api/headers</button>
+        <button type="button" data-method="POST" data-url="/api/subscribe"><span class="method post">POST</span> /api/subscribe</button>
+        <button type="button" data-method="GET" data-url="/api/admin"><span class="method get">GET</span> /api/admin</button>
+        <button type="button" data-method="GET" data-url="/api/stats"><span class="method get">GET</span> /api/stats</button>
+        <button type="button" data-method="GET" data-url="/api/nonexistent"><span class="method get">GET</span> /api/nonexistent (404)</button>
+      </div>
+    </section>
+
+    <section class="panel output-panel">
+      <div class="output-header">
+        <h2>Server Response</h2>
+        <span id="status-badge" class="status-badge">Waiting for request...</span>
+      </div>
+      <pre id="response-output">Click a button above to inspect the HTTP status code and response payload.</pre>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
